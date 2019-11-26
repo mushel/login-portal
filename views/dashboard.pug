@@ -9,4 +9,18 @@ block content
   .row
     .offset-sm-2.col-sm-8
       .jumbotron.text-center.
-        Welcome to your dashboard page, #{user.profile.firstName}.
+        Welcome to your dashboard page, you can only get here by logging in! Howdy #{user.profile.firstName} #{user.profile.lastName}. Username is #{user.profile.email}. Your password is #{user.profile.password}.
+
+  .row
+    .offset-sm-2.col-sm-8
+    h3 Stephanie's Page
+
+  .row
+    .offset-sm-2.col-sm-8    
+      .carousel.slide.carousel-fade(data-ride="carousel")
+        .carousel-inner
+            .carousel-item.active
+            img(src="https://picsum.photos/id/237/200/300")
+        .carousel-inner
+            .carousel-item
+            img(src="https://picsum.photos/seed/picsum/200/300")

@@ -3,10 +3,14 @@ const express = require("express");
 
 const router = express.Router();
 
-// Home page
+// dashboard
 router.get("/", (req, res) => {
-  res.render("index");
+  res.render("dashboard");
 });
 
 
 module.exports = router;
+
+
+// for the carousel 
+$('.carousel').carousel()
