@@ -3,9 +3,9 @@ const express = require("express");
 
 const router = express.Router();
 
-// Home page
+// Seekers page
 router.get("/", (req, res) => {
-  res.render("index");
+  res.render("seeker");
 });
 
 module.exports = router;

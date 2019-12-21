@@ -4,23 +4,79 @@ block variables
   - var title = "Dashboard"
 
 block content
-  h2.text-center Dashboard
+    h2.text-center Manager's Dashboard
 
-  .row
-    .offset-sm-2.col-sm-8
-      .jumbotron.text-center.
-        Welcome to your dashboard page, you can only get here by logging in! Howdy #{user.profile.firstName} #{user.profile.lastName}. Username is #{user.profile.email}. Your password is #{user.profile.password}.
+    .row
+        .offset-sm-2.col-sm-8
+            .jumbotron.text-center.
+                Howdy #{user.profile.firstName} #{user.profile.lastName}! 
+                Username is #{user.profile.email}   
+            
+            a(href="#create" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample").btn.btn-secondary.btn-lg.btn-block Create Job Post
+    .row
+        .offset-sm-2.col-sm-8    
+            hr
+            h3 Job Posts
+            hr
+        .offset-sm-2.col-sm-5
+            h6 Company
+        .col-sm-3.text-right
+            h6 Start Date 
+        .offset-sm-2.col-sm-5
+            h6 Position
+        .col-sm-3.text-right
+            h6 Pay & Increment
+        .offset-sm-2.col-sm-8
+            h6 Benifits
+    .row
+        .offset-sm-2.col-sm-8    
+            hr
+            h3 Applicants
+            hr
+        .offset-sm-2.col-sm-5
+            img(src="https://picsum.photos/100").float-left.rounded.avatar
+            h6 Name
+            h6 Objective
+        .col-sm-3.text-right
+            i.material-icons chat &nbsp;
+            i.material-icons list_alt &nbsp;
+            i.material-icons remove_circle    
+            h6 Phone
+    .row
+        .offset-sm-2.col-sm-8
+            hr
+    .row
+        .offset-sm-2.col-sm-4   
+            img(src="https://picsum.photos/id/237/200/300") 
+        .col-sm-4
+            img(src="https://picsum.photos/seed/picsum/200/300") 
 
-  .row
-    .offset-sm-2.col-sm-8
-    h3 Stephanie's Page
-
-  .row
-    .offset-sm-2.col-sm-8    
-      .carousel.slide.carousel-fade(data-ride="carousel")
-        .carousel-inner
-            .carousel-item.active
-            img(src="https://picsum.photos/id/237/200/300")
-        .carousel-inner
-            .carousel-item
-            img(src="https://picsum.photos/seed/picsum/200/300")
+    #create.row
+        .offset-sm-2.col-sm-8
+            form(action="post")
+                .form-group
+                    label(for="mgmtCompany") Company Name                   
+                    input(type="text").form-control
+                .form-group
+                    label(for="mgmtPosition") Job Position                   
+                    input(type="text").form-control
+                .form-group
+                    label(for="mgmtPay") Job Pay                 
+                    input(type="number").form-control
+                .form-group
+                    label(for="mgmtPosition") Pay Increments                   
+                    select(name="mgmtPayIncrements").form-control
+                        option(value="hourly") Hourly
+                        option(value="hourly+tips") Hourly + Tips
+                        option(value="day") Day Rate
+                .form-group
+                    label(for="mgmtPosition") Benifits                   
+                    textarea(type="text" rows="3").form-control
+                .form-group
+                    label(for="mgmtPay") Start Date              
+                    input(type="text").form-control
+               
+                .btn-group
+                    button.btn.btn-success.btn-lg Save
+                    button.btn.btn-secondary.btn-lg Post
+                

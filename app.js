@@ -2,12 +2,13 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var logger = require('mimi');
+var logger = require('morgan');
 var session = require('express-session');
 var okta = require("@okta/okta-sdk-nodejs");
 var ExpressOIDC = require("@okta/oidc-middleware").ExpressOIDC;
 
-const dashboardRouter = require("./routes/dashboard");         
+const dashboardRouter = require("./routes/dashboard"); 
+const seekerRouter = require("./routes/seeker");         
 const publicRouter = require("./routes/public");
 const usersRouter = require("./routes/users");
 
@@ -32,6 +33,23 @@ const oidc = new ExpressOIDC({
     }
   }
 });
+// new seeker login
+//const oidc = new ExpressOIDC({
+//  issuer: "https://dev-807318.okta.com/oauth2/default",
+//  client_id: '0oa2a5f0itQRpMKhQ357',
+//  client_secret: '4tFOnrBBkh1kVNsb_-XGoPwmOuR8O2r_2E5PXErH',
+//  redirect_uri: 'http://localhost:3000/users/callback',
+//  scope: "openid profile",
+//  routes: {
+//    login: {
+//      path: "/users/login"
+//    },
+//    callback: {
+//      path: "/users/callback",
+//      defaultRedirect: "/seekerDashboard"
+//    }
+//  }
+//});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -72,6 +90,7 @@ function loginRequired(req, res, next) {
 }
 
 app.use('/', publicRouter);
+app.use('/seeker', seekerRouter);
 app.use('/dashboard', loginRequired, dashboardRouter);
 app.use('/users', usersRouter);
 
@@ -92,6 +111,3 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-
-// for the carousel 
-$('.carousel').carousel()

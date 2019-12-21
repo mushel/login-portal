@@ -12,5 +12,3 @@ router.get("/", (req, res) => {
 module.exports = router;
 
 
-// for the carousel 
-$('.carousel').carousel()
